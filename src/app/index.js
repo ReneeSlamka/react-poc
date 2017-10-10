@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Angular from 'angular';
+import PropTypes from 'prop-types';
+import { react2angular } from 'react2angular';
 
-// class Welcome extends React.Component {
-//   render() {
-//     return <h1>Hello, {this.props.name}</h1>;
-//   }
-// }
-// const element = <Welcome name="Sara" />;
-// ReactDOM.render(
-//   element,
-//   document.getElementById('thingy-wrapper')
-// );
+class LinkIntegrationTest extends React.Component {
+    render() {
+        return <p>{this.props.phrase}</p>;
+    }
+}
+
+class ReactToAngularTest extends React.Component {
+    render() {
+        return <p>{this.props.phrase}</p>;
+    }
+}
 
 class Test extends React.Component {
     render() {
@@ -19,11 +22,13 @@ class Test extends React.Component {
     }
 }
 
-angular.module('app',[])
-       .controller('TestCtrl', function($scope) {
+angular.module('app', [])
+        .controller('TestCtrl', function($scope) {
            $scope.titleStr = "This is to test that my Angular controller is working";
-       })
-       .directive('test', function() {
+           $scope.react2angularStr = "I'm a React component converted to an Angular directive by React2Angular!";
+        })
+        .component('reactToAngularTest', react2angular(ReactToAngularTest, ['phrase']))
+        .directive('linkIntegrationWrapper', function() {
 
            return {
                restrict: 'E',
@@ -31,12 +36,12 @@ angular.module('app',[])
                    phrase: '@'
                },
                link: function (scope, elem, attrs) {
-                 ReactDOM.render(<Test phrase={scope.phrase}/>, elem[0]);
+                 ReactDOM.render(<LinkIntegrationTest phrase={scope.phrase}/>, elem[0]);
                }
            };
-       });
+        });
 
 
-angular.element(function() {
-    angular.bootstrap(document, ['app']);
-});
+// angular.element(function() {
+//     angular.bootstrap(document, ['app']);
+// });

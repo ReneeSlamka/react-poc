@@ -6,12 +6,13 @@
         <script src="/app/bundle.js"></script>
     </head>
     <body>
-        <div id="thingy-wrapper"></div>
         <div ng-app="app">
             <div ng-controller="TestCtrl">
                 <h1>Proof React Can Play Nice with Angular</h1>
                 <h2>{{titleStr}}</h2>
-                <test phrase="Woohoo I'm a React component displaying an Angular directive's scope shiz!"></test>
+                <react-to-angular-test phrase="react2angularStr"></react-to-angular-test>
+                <link-integration-wrapper phrase="I'm a React component rendered in an Angular directive's link function!">
+                </link-integration-wrapper>
             </div>
         </div>
     </body>
