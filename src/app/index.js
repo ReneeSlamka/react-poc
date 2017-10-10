@@ -13,6 +13,12 @@ import Angular from 'angular';
 //   document.getElementById('thingy-wrapper')
 // );
 
+class Test extends React.Component {
+    render() {
+        return <p>{this.props.phrase}</p>;
+    }
+}
+
 angular.module('app',[])
        .controller('TestCtrl', function($scope) {
            $scope.titleStr = "This is a test";
@@ -24,7 +30,9 @@ angular.module('app',[])
                scope: {
                    phrase: '@'
                },
-               template: '<p>{{phrase}}</p>'
+               link: function (scope, elem, attrs) {
+                 ReactDOM.render(<Test phrase="Blahddd"/>, elem[0]);
+               }
            };
        });
 
