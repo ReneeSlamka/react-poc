@@ -3,9 +3,16 @@
     <head>
         <meta charset="utf-8">
         <title>Angular React POC</title>
+        <script src="/app/bundle.js"></script>
     </head>
     <body>
         <div id="thingy-wrapper"></div>
-        <script src="/app/bundle.js"></script>
+        <div ng-app="app">
+            <div ng-controller="TestCtrl">
+                <h1>Proof React Can Play Nice with Angular</h1>
+                <h2>{{titleStr}}</h2>
+                <test phrase="Blah"></test>
+            </div>
+        </div>
     </body>
 </html>
