@@ -21,7 +21,7 @@ class Test extends React.Component {
 
 angular.module('app',[])
        .controller('TestCtrl', function($scope) {
-           $scope.titleStr = "This is a test";
+           $scope.titleStr = "This is to test that my Angular controller is working";
        })
        .directive('test', function() {
 
@@ -31,7 +31,7 @@ angular.module('app',[])
                    phrase: '@'
                },
                link: function (scope, elem, attrs) {
-                 ReactDOM.render(<Test phrase="Blahddd"/>, elem[0]);
+                 ReactDOM.render(<Test phrase={scope.phrase}/>, elem[0]);
                }
            };
        });
