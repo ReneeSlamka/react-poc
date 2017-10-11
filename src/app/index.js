@@ -26,6 +26,7 @@ angular.module('app', [])
         .controller('TestCtrl', function($scope) {
            $scope.titleStr = "This is to test that my Angular controller is working";
            $scope.react2angularStr = "I'm a React component converted to an Angular directive by React2Angular!";
+           $scope.transclusionSuccessStr = "WOHOO you got transclusion working!";
         })
         .component('reactToAngularTest', react2angular(ReactToAngularTest, ['phrase']))
         .directive('linkIntegrationWrapper', function() {
