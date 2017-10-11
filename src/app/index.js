@@ -18,7 +18,7 @@ class ReactToAngularTest extends React.Component {
 
 class ReactTranscludeTest extends React.Component {
     render() {
-        return <div>{this.props.children}</div>;
+        return <div>{this.props.transclude}</div>;
     }
 }
 
@@ -47,7 +47,7 @@ angular.module('app', [])
                 transclude: true,
                 link: function(scope, elem, attrs, controller, transclude) {
                     var content = transclude();
-                    ReactDOM.render(<ReactTranscludeTest><h3>Some text</h3></ReactTranscludeTest>, elem[0]);
+                    ReactDOM.render(<ReactTranscludeTest transclude={content[0].data}/>, elem[0]);
                 }
             }
         });

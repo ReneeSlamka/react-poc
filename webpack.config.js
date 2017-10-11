@@ -8,6 +8,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/app/'
     },
+    devtool: 'source-map',
     module: {
       rules: [
         {
